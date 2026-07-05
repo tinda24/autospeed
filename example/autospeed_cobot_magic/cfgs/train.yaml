@@ -1,0 +1,46 @@
+defaults:
+  - _self_
+  - agent: autospeed
+  - action_head: dit_flow
+  - ratio_head: ratio_head_softmax
+  - suite: alohareal_240320
+  - dataloader: alohareal_ddp
+  - experiments: exp
+  - override hydra/launcher: submitit_local
+
+save_speed_detail: True
+seed: 42
+
+dataloader_debug: False
+eval: True
+eval_every_steps: 1000
+t_eval_sampling_times: 5
+
+num_workers: 2
+batch_size: ${experiments.batch_size}
+lr: ${experiments.lr}
+num_train_steps: ${experiments.num_train_steps}
+s1_till_steps: ${experiments.s1_till_steps}
+s2_till_steps: ${experiments.s2_till_steps}
+log_every_steps: ${experiments.log_every_steps}
+save_every_steps: ${experiments.save_every_steps}
+fig_every_steps: ${experiments.fig_every_steps}
+
+Save_Title: ${experiments.exp_name}
+multi_gpu: ${experiments.multi_gpu}
+root_dir: ${oc.env:autospeed_ROOT,.}
+device: cuda
+run_id: ${now:%Y.%m.%d}/${now:%H%M%S}
+load_bc: False
+bc_weight: null
+
+hydra:
+  run:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+  sweep:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ${root_dir}/checkpoints/${Save_Title}/${run_id}/.slurm

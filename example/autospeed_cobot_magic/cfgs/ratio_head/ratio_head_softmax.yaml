@@ -1,0 +1,6 @@
+_target_: modules.ratio_head.ratio_head_softmax.RatioHead
+
+input_dim: ${agent.hidden_dim}
+hidden_dim: ${agent.hidden_dim}
+num_layers: 4
+new_loss_args: ${agent.new_loss_args}

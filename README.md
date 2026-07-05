@@ -6,6 +6,8 @@ The corresponding experiment videos are available at: [Project Page](https://zih
 
 [26-07-02] We have open-sourced the core code required for AutoSpeed training, so you can try integrating it into your own codebase. Recommend: [ACT](https://github.com/tonyzhaozh/act) [BAKU](https://github.com/siddhanthaldar/BAKU/tree/main)
 
+[26-07-05] We have open-sourced the core code and pretrained checkpoints in our real-world experiments. See in [[Page]](./example/README.md)
+
 
 ## Codebase Structure
 
@@ -31,8 +33,13 @@ The `example` folder provides policy examples that we have already adapted. This
 
 ## Quick Start
 
-We will gradually reorganize and release the already adapted models. Of course, the current version already includes all the necessary modules. You only need to add a selective optimization process before gradient optimization in the models that need to be adapted.
+We will gradually reorganize and release the already adapted models. See the process in the news.
 
-## Checkpoints
 
-To be released.
+## Acknowledgements and Code References
+
+This repository builds upon and refers to several excellent open-source projects. We sincerely thank the authors of the following repositories for releasing their code and contributing to the robotics and decision-making research community:
+
+* [BAKU](https://github.com/siddhanthaldar/BAKU): parts of our policy implementation, training pipeline, and experimental code structure are adapted from or inspired by this repository.
+* [CleanDiffuser](https://github.com/CleanDiffuserTeam/CleanDiffuser): parts of our diffusion-related implementation and training utilities are adapted from or inspired by this modular diffusion-model codebase.
+* [COCOS](https://github.com/ZibinDong/cocos): parts of our diffusion-related implementation and training utilities are adapted from or inspired by this modular diffusion-model codebase.

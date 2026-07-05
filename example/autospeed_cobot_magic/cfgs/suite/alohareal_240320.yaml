@@ -1,0 +1,16 @@
+# @package suite
+defaults:
+  - _self_
+  - task: alohareal_tasks
+
+suite: alohareal
+name: "alohareal"
+
+action_dim: 14
+proprio_dim: 14
+pixel_keys: ["cam_global","cam_left_wrist","cam_right_wrist"]
+num_views: 3
+proprio_key: "proprioceptive"
+lang_key: "task_emb"
+
+img_size: [240, 320]

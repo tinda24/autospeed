@@ -1,9 +1,23 @@
-## Codebase Structure
+## Autospeed Codes for cobot magic platform Usage
 
-As described above, AutoSpeed is a plug-and-play training scheme that can be applied to various non-generative and generative embodied manipulation policies. To make it easier to use, we have reorganized the development code and refactored AutoSpeed into an **independent server class**, integrating its core functionalities into `./agent/autospeed_server.py`. This allows you to quickly deploy AutoSpeed in the training pipelines of different policies.
+#### Preparation
+```python
+cd example/autospeed_cobot_magic/repos
+git clone https://github.com/CleanDiffuserTeam/CleanDiffuser.git
+```
 
-The `example` folder provides policy examples that we have already adapted. This folder will be gradually updated with more examples in the future.
+The language encoder is available at [[all-MiniLM-L6-v2]](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
 
-## To be released
+#### Training
+```python
+python example/autospeed_cobot_magic/scripts/train.py
+```
 
-We will gradually reorganize and release the already adapted models. Of course, the current version already includes all the necessary modules. You only need to add a selective optimization process before gradient optimization in the models that need to be adapted.
+#### Real Robot Inference
+```python
+python example/autospeed_cobot_magic/scripts/inference.py
+```
+
+#### Pretrained Checkpoints
+We have made the real-robot checkpoints trained on the cobot magic dual-arm platform publicly available for the community to use.
+You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telon1/autospeed_cobot_magic_ckpt)

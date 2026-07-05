@@ -1,0 +1,53 @@
+defaults:
+  - _self_
+  - agent: autospeed
+  - action_head: dit_flow
+  - ratio_head: ratio_head_softmax
+  - suite: alohareal_240320
+
+test_debug: 0
+send_action: 1
+debug_full_traj: 1
+
+lang_encoder: minilm
+
+root_dir: ${oc.env:autospeed_ROOT,.}
+project_dir: ${oc.env:autospeed_PROJECT_DIR,./checkpoints/latest}
+
+use_nonlinear_temporal_agg: True
+
+round: 120000
+ckpt_dir: ${project_dir}/snapshot/${round}.pt
+config_dir: ${project_dir}/full_config.yaml
+norm_dir: ${project_dir}/stats.hdf5
+
+log_video_save_dir: ${root_dir}/EVAL_VIDEO
+
+seed: 0
+device: cuda
+
+temporal_agg: True
+img_size: [240, 320]
+
+img_front_topic: "/camera1/color/image_raw/compressed"
+img_left_topic: "/camera3/color/image_raw/compressed"
+img_right_topic: "/camera2/color/image_raw/compressed"
+
+img_front_depth_topic: ""
+img_left_depth_topic: ""
+img_right_depth_topic: ""
+
+puppet_arm_left_cmd_topic: "/master/joint_left"
+puppet_arm_right_cmd_topic: "/master/joint_right"
+puppet_arm_left_topic: "/puppet/joint_left"
+puppet_arm_right_topic: "/puppet/joint_right"
+
+robot_base_topic: "/odom_raw"
+robot_base_cmd_topic: "/cmd_vel"
+use_robot_base: False
+publish_rate: 40
+pos_lookahead_step: 0
+
+arm_steps_length: [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.2]
+use_actions_interpolation: False
+use_depth_image: False

@@ -1,0 +1,16 @@
+defaults:
+  - _self_
+
+suite: 'alohareal'
+scenes:
+  - desktop
+task_picked: alohareal
+tasks:
+  - desktop:
+    - 'task1'
+    - 'task2'
+    - 'task3'
+    - 'task4'
+  
+eval_data_paths:
+  - 'path/to/the/eval/data'
