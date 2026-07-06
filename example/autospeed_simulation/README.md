@@ -1,4 +1,4 @@
-# AutoSpeed Simulation Examples
+# AutoSpeed Simulation Implement Guidance
 
 ## Preparation
 
@@ -61,6 +61,6 @@ EVAL_SPEEDUP=false python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>
 `EVAL_SPEEDUP` is passed to `make_sim_env(task_name, speedup)`. When it is enabled, the simulator loads the high-gain MuJoCo XML files instead of the normal XML files under `/suite/act/assets/`. This increases the gripper actuator gain so that open/close commands respond faster and with stronger tracking during evaluation.
 
 
-#### Pretrained Checkpoints
+### Pretrained Checkpoints
 We have prepared some pretrained checkpoints in the AlohaSim publicly available for the community to use.
 You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telon1/autospeed_alohasim_ckpt)
