@@ -40,6 +40,9 @@ We will gradually reorganize and release the already adapted models. See the pro
 
 This repository builds upon and refers to several excellent open-source projects. We sincerely thank the authors of the following repositories for releasing their code and contributing to the robotics and decision-making research community:
 
+* [ACT](https://github.com/tonyzhaozh/act): simulation baseline.
 * [BAKU](https://github.com/siddhanthaldar/BAKU): parts of our policy implementation, training pipeline, and experimental code structure are adapted from or inspired by this repository.
 * [CleanDiffuser](https://github.com/CleanDiffuserTeam/CleanDiffuser): parts of our diffusion-related implementation and training utilities are adapted from or inspired by this modular diffusion-model codebase.
 * [COCOS](https://github.com/ZibinDong/cocos): parts of our diffusion-related implementation and training utilities are adapted from or inspired by this modular diffusion-model codebase.
+* [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO): our simulated manipulation experiments and evaluation protocols are built on or reference this lifelong robot learning benchmark.
+* [MetaWorld](https://github.com/Farama-Foundation/Metaworld): our multi-task manipulation experiments and evaluation environments are built on or reference this benchmark suite.
