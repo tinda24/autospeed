@@ -1,0 +1,39 @@
+defaults:
+  - _self_
+  - task: libero_10
+
+suite: libero
+name: "libero"
+
+action_dim: 10
+proprio_dim: 9
+pixel_keys: ["high_camera", "right_camera"]
+num_views: 2
+proprio_key: "proprioceptive"
+lang_key: "task_emb"
+img_size: [128, 128]
+
+frame_stack: 1
+action_repeat: 1
+
+eval_every_steps: 200000
+num_eval_episodes: 5
+eval_history_len: 5
+
+task_make_fn:
+  _target_: suite.libero.make
+  suite: ${suite.task.suite}
+  scenes: ${suite.task.scenes}
+  tasks: ${suite.task.tasks}
+  frame_stack: 1
+  action_repeat: 1
+  seed: ${seed}
+  height: 128
+  width: 128
+  max_episode_len: ???
+  max_state_dim: ???
+  eval: ${eval}
+  use_delta: false
+  gripper_gain_scale: 1.0
+  controller_kp_scale: 1.0
+  controller_kd_scale: 1.0

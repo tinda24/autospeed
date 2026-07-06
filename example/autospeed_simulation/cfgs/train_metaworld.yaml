@@ -1,0 +1,49 @@
+defaults:
+  - _self_
+  - agent: autospeed
+  - action_head: dit_flow
+  - ratio_head: ratio_head_softmax
+  - suite: metaworld
+  - dataloader: metaworld_ddp
+  - experiments_metaworld: exp
+  - override hydra/launcher: submitit_local
+
+save_speed_detail: true
+seed: 42
+
+experiments_realaloha: ${experiments_metaworld}
+experiments_simaloha: ${experiments_metaworld}
+
+dataloader_debug: false
+eval: true
+eval_every_steps: 10000
+t_eval_sampling_times: 3
+
+num_workers: 2
+batch_size: ${experiments_metaworld.batch_size}
+lr: ${experiments_metaworld.lr}
+num_train_steps: ${experiments_metaworld.num_train_steps}
+s1_till_steps: ${experiments_metaworld.s1_till_steps}
+s2_till_steps: ${experiments_metaworld.s2_till_steps}
+log_every_steps: ${experiments_metaworld.log_every_steps}
+save_every_steps: ${experiments_metaworld.save_every_steps}
+fig_every_steps: ${experiments_metaworld.fig_every_steps}
+
+Save_Title: ${experiments_metaworld.exp_name}
+multi_gpu: ${experiments_metaworld.multi_gpu}
+root_dir: ${oc.env:AUTOSPEED_ROOT,.}
+device: cuda
+run_id: ${now:%Y.%m.%d}/${now:%H%M%S}
+load_bc: false
+bc_weight: null
+
+hydra:
+  run:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+  sweep:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ${root_dir}/checkpoints/${Save_Title}/${run_id}/.slurm

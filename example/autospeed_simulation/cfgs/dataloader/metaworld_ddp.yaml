@@ -1,0 +1,12 @@
+bc_dataset:
+  _target_: read_data.metaworld_ddp.BCDataset
+  path: ${oc.env:METAWORLD_DATA_DIR,data/metaworld_abs}
+  tasks: ${suite.task.tasks}
+  num_queries: ${agent.num_queries}
+  new_loss_args: ${agent.new_loss_args}
+  action_overcollect_ratio: 1
+  stats_path: ???
+  img_size: ${suite.img_size}
+  proprio_dim: ${suite.proprio_dim}
+  group_loss_window: ${agent.group_loss_window}
+  debug: ${dataloader_debug}

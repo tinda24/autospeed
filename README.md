@@ -6,7 +6,9 @@ The corresponding experiment videos are available at: [Project Page](https://zih
 
 [26-07-02] We have open-sourced the core code required for AutoSpeed training, so you can try integrating it into your own codebase. Recommend: [ACT](https://github.com/tonyzhaozh/act) [BAKU](https://github.com/siddhanthaldar/BAKU/tree/main)
 
-[26-07-05] We have open-sourced the core code and pretrained checkpoints in our real-world experiments. See in [[Page]](./example/README.md)
+[26-07-05] We have open-sourced the core code and some pretrained checkpoints in our real-world experiments. See in [[Page]](./example/autospeed_cobot_magic/README.md)
+
+[26-07-06] We have open-sourced the core code and some pretrained checkpoints in our simulation experiments. See in [[Page]](./example/autospeed_simulation/README.md)
 
 
 ## Codebase Structure

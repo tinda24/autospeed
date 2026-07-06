@@ -1,0 +1,34 @@
+_target_: agent.autospeed.Actor
+action_head: ${action_head}
+ratio_head: ${ratio_head}
+encoder_type: dino
+action_dim: ${suite.action_dim}
+proprio_dim: ${suite.proprio_dim}
+img_size: ${suite.img_size}
+hidden_dim: 512
+loss_coef: 100
+num_queries: ${experiments_realaloha.num_queries}
+num_views: ${suite.num_views}
+pixel_keys: ${suite.pixel_keys}
+proprio_key: ${suite.proprio_key}
+lang_key: ${suite.lang_key}
+action_overcollect_ratio: ${dataloader.bc_dataset.action_overcollect_ratio}
+group_loss_window: ${experiments_realaloha.group_loss_window}
+s1_till_steps: ${experiments_realaloha.s1_till_steps}
+s2_till_steps: ${experiments_realaloha.s2_till_steps}
+s1_strategy: ${experiments_realaloha.s1_strategy}
+syn_optimize_ratio: ${experiments_realaloha.syn_optimize_ratio}
+constrain_start_step: ${experiments_realaloha.constrain_start_step}
+constrain_coef_linear_up: ${experiments_realaloha.constrain_coef_linear_up}
+constrain_other_coef_linear_down: ${experiments_realaloha.constrain_other_coef_linear_down}
+optimize_target: ${experiments_realaloha.optimize_target}
+action_recon_coef: ${experiments_realaloha.action_recon_coef}
+noise_init_varying_multispeed: ${experiments_realaloha.noise_init_varying_multispeed}
+criterion_type: ${experiments_realaloha.criterion_type}
+step_loss_type: ${experiments_realaloha.step_loss_type}
+step_loss_ratio: ${experiments_realaloha.step_loss_ratio}
+constrain_speed_via_ratio_head: ${experiments_realaloha.constrain_speed_via_ratio_head}
+constrain_from_ratio_coef: ${experiments_realaloha.constrain_from_ratio_coef}
+new_loss_args:
+  speed_range: ${experiments_realaloha.speed_range}
+  speed_step: ${experiments_realaloha.speed_step}

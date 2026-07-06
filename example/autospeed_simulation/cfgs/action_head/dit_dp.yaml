@@ -1,0 +1,21 @@
+_target_: modules.action_head.dit_dp.ActionHead
+
+action_dim: ${agent.action_dim}
+hidden_dim: ${agent.hidden_dim}
+num_queries: ${agent.num_queries}
+
+num_heads: 8
+num_layers: 3
+d_model: 512
+timestep_emb_type: "untrainable_fourier"
+timestep_emb_params:
+  scale: 0.2
+
+num_diffusion_steps: 100
+beta_schedule: squaredcos_cap_v2
+sampling_steps: 20
+
+noise_init_varying_multispeed: ${agent.noise_init_varying_multispeed}
+criterion_type: ${agent.criterion_type}
+optimize_target: ${agent.optimize_target}
+action_recon_coef: ${agent.action_recon_coef}

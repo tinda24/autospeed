@@ -1,0 +1,26 @@
+defaults:
+  - _self_
+  - task: metaworld_tasks
+
+suite: metaworld
+name: "metaworld"
+
+action_dim: 4
+proprio_dim: 9
+pixel_keys: ["cam_global"]
+num_views: 1
+proprio_key: "proprioceptive"
+lang_key: "task_emb"
+
+img_size: [112, 112]
+
+frame_stack: 1
+action_repeat: 1
+
+eval_every_steps: 10000
+num_eval_episodes: 1
+eval_history_len: 1
+
+task_make_fn:
+  _target_: suite.metaworld_wrapper.make
+  task_name: task_000_pick-up-a-nut-and-place-it-onto-a-peg

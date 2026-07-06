@@ -1,0 +1,63 @@
+defaults:
+  - _self_
+
+suite: "metaworld"
+scenes:
+  - "default"
+task_picked: metaworld
+tasks:
+  - metaworld:
+      - 'task_000_pick-up-a-nut-and-place-it-onto-a-peg'
+      - 'task_001_dunk-the-basketball-into-the-basket'
+      - 'task_002_grasp-the-puck-from-one-bin-and-place-it-into-another-bin'
+      - 'task_003_grasp-the-cover-and-close-the-box-with-it'
+      - 'task_004_press-a-button-from-the-top'
+      - 'task_005_bypass-a-wall-and-press-a-button-from-the-top'
+      - 'task_006_press-a-button'
+      - 'task_007_bypass-a-wall-and-press-a-button'
+      - 'task_008_push-a-button-on-the-coffee-machine'
+      - 'task_009_pull-a-mug-from-a-coffee-machine'
+      - 'task_010_push-a-mug-under-a-coffee-machine'
+      - 'task_011_rotate-a-dial-180-degrees'
+      - 'task_012_pick-a-nut-out-of-a-peg'
+      - 'task_013_close-a-door-with-a-revolving-joint'
+      - 'task_014_lock-the-door-by-rotating-the-lock-clockwise'
+      - 'task_015_open-a-door-with-a-revolving-joint'
+      - 'task_016_unlock-the-door-by-rotating-the-lock-counter-clockwise'
+      - 'task_017_insert-the-gripper-into-a-hole'
+      - 'task_018_push-and-close-a-drawer'
+      - 'task_019_open-a-drawer'
+      - 'task_020_rotate-the-faucet-counter-clockwise'
+      - 'task_021_rotate-the-faucet-clockwise'
+      - 'task_022_hammer-a-screw-on-the-wall'
+      - 'task_023_press-a-handle-down-sideways'
+      - 'task_024_press-a-handle-down'
+      - 'task_025_pull-a-handle-up-sideways'
+      - 'task_026_pull-a-handle-up'
+      - 'task_027_pull-a-lever-down-90-degrees'
+      - 'task_028_pick-a-puck-bypass-a-wall-and-place-the-puck'
+      - 'task_029_pick-up-a-puck-from-a-hole'
+      - 'task_030_pick-and-place-a-puck-to-a-goal'
+      - 'task_031_slide-a-plate-into-a-cabinet'
+      - 'task_032_slide-a-plate-into-a-cabinet-sideways'
+      - 'task_033_get-a-plate-from-the-cabinet'
+      - 'task_034_get-a-plate-from-the-cabinet-sideways'
+      - 'task_035_insert-a-peg-sideways'
+      - 'task_036_unplug-a-peg-sideways'
+      - 'task_037_kick-a-soccer-into-the-goal'
+      - 'task_038_grasp-a-stick-and-push-a-box-using-the-stick'
+      - 'task_039_grasp-a-stick-and-pull-a-box-with-the-stick'
+      - 'task_040_push-the-puck-to-a-goal'
+      - 'task_041_bypass-a-wall-and-push-a-puck-to-a-goal'
+      - "task_042_reach-a-goal-position"
+      - 'task_043_bypass-a-wall-and-reach-a-goal'
+      - 'task_044_pick-and-place-a-puck-onto-a-shelf'
+      - 'task_045_sweep-a-puck-into-a-hole'
+      - 'task_046_sweep-a-puck-off-the-table'
+      - 'task_047_push-and-open-a-window'
+      - 'task_048_push-and-close-a-window'
+
+eval_data_paths:
+  - "${dataloader.bc_dataset.path}/task_000_pick-up-a-nut-and-place-it-onto-a-peg/episode_0.hdf5"
+  - '${dataloader.bc_dataset.path}/task_024_press-a-handle-down/episode_0.hdf5'
+  - '${dataloader.bc_dataset.path}/task_048_push-and-close-a-window/episode_0.hdf5'

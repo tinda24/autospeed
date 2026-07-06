@@ -1,0 +1,15 @@
+defaults:
+  - _self_
+  - task: alohasim_tasks
+
+suite: alohasim
+name: "alohasim"
+
+action_dim: 14
+proprio_dim: 14
+pixel_keys: ["cam_global"]
+num_views: 1
+proprio_key: "proprioceptive"
+lang_key: "task_emb"
+
+img_size: [480, 640]

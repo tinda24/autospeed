@@ -1,0 +1,52 @@
+defaults:
+  - _self_
+  - agent: autospeed
+  - action_head: dit_flow
+  - ratio_head: ratio_head_softmax
+  - suite: libero
+  - dataloader: libero_ddp
+  - experiments_libero: exp
+  - override hydra/launcher: submitit_local
+
+agent:
+  encoder_type: resnet
+
+save_speed_detail: true
+seed: 42
+
+experiments_realaloha: ${experiments_libero}
+experiments_simaloha: ${experiments_libero}
+
+dataloader_debug: false
+eval: true
+eval_every_steps: 10000
+t_eval_sampling_times: 3
+
+num_workers: 4
+batch_size: ${experiments_libero.batch_size}
+lr: ${experiments_libero.lr}
+num_train_steps: ${experiments_libero.num_train_steps}
+s1_till_steps: ${experiments_libero.s1_till_steps}
+s2_till_steps: ${experiments_libero.s2_till_steps}
+log_every_steps: ${experiments_libero.log_every_steps}
+save_every_steps: ${experiments_libero.save_every_steps}
+fig_every_steps: ${experiments_libero.fig_every_steps}
+
+Save_Title: ${experiments_libero.exp_name}
+multi_gpu: ${experiments_libero.multi_gpu}
+root_dir: ${oc.env:AUTOSPEED_ROOT,.}
+device: cuda
+run_id: ${now:%Y.%m.%d}/${now:%H%M%S}
+load_bc: false
+bc_weight: null
+
+hydra:
+  run:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+  sweep:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${run_id}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ${root_dir}/checkpoints/${Save_Title}/${run_id}/.slurm

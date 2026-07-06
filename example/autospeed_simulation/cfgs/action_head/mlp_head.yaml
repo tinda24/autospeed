@@ -1,0 +1,6 @@
+_target_: modules.action_head.mlp_head.ActionHead
+
+action_dim: ${agent.action_dim}
+hidden_dim: ${agent.hidden_dim}
+num_layers: 10
+num_queries: ${agent.num_queries}

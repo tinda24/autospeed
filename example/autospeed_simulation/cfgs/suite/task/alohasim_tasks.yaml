@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+
+suite: 'alohasim'
+scenes:
+  - desktop
+task_picked: alohasim
+tasks:
+  - desktop:
+    - 'sim_insertion_human'
+
+eval_data_paths:
+  - ${oc.env:ALOHA_SIM_DATA_DIR,data/alohasim}/sim_insertion_human/episode_0.hdf5
+  - ${oc.env:ALOHA_SIM_DATA_DIR,data/alohasim}/sim_insertion_human/episode_1.hdf5

@@ -1,0 +1,21 @@
+_target_: modules.action_head.act_head.ACTActionHead
+
+state_dim: ${agent.state_dim}
+action_dim: ${agent.action_dim}
+num_queries: ${agent.num_queries}
+
+camera_names: ${agent.camera_names}
+
+hidden_dim: 512
+enc_layers: 4
+dec_layers: 1
+nheads: 8
+dim_feedforward: 3200
+dropout: 0.1
+
+backbone: resnet18
+position_embedding: sine
+lr_backbone: 1e-5
+
+latent_dim: 32
+kl_weight: 10.0

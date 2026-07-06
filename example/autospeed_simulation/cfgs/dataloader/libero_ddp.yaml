@@ -1,0 +1,16 @@
+bc_dataset:
+  _target_: read_data.libero_ddp.BCDataset
+  path: ${oc.env:LIBERO_DATA_DIR,data/libero_abs}
+  suite: ${suite.task.suite}
+  scenes: ${suite.task.scenes}
+  tasks: ${suite.task.tasks}
+  num_demos_per_task: null
+  num_future_queries: ${agent.num_queries}
+  num_past_queries: 0
+  work_dir: ${root_dir}
+  img_size: [128, 128]
+  proprio_dim: 9
+  stats_path: ???
+  group_loss_window: ${agent.group_loss_window}
+  action_overcollect_ratio: 1
+  new_loss_args: ${agent.new_loss_args}
