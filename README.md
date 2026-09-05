@@ -127,7 +127,7 @@ EVAL_SPEEDUP=false python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>
 ### 5.5 Pretrained Checkpoints
 We have prepared some pretrained checkpoints in the AlohaSim publicly available for the community to use.
 You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telon1/autospeed_alohasim_ckpt)
-
+(oh!Based on reader feedback, there is an issue with the module matching. We recommend that you adjust the parameters yourself for training. We will fix this problem by the end of this month.)
 
 
 
