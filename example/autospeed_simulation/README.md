@@ -1,11 +1,18 @@
-# AutoSpeed Simulation Implement Guidance
+# AutoSpeed Simulation Implementation Guide
 
 ## Preparation
 
-Install the dependencies required by the target simulator before running its scripts. CleanDiffuser is used by the action heads:
+Install the dependencies required by the target simulator before running its
+scripts.
 
 ```bash
 cd example/autospeed_simulation
+python -m pip install torch-dct huggingface_hub
+```
+
+CleanDiffuser is used by the diffusion and flow action heads:
+
+```bash
 mkdir -p repos
 git clone https://github.com/CleanDiffuserTeam/CleanDiffuser.git repos/CleanDiffuser
 ```
@@ -28,7 +35,67 @@ export LIBERO_DATA_DIR=data/libero
 export METAWORLD_DATA_DIR=data/metaworld
 ```
 
+## Pretrained ALOHA Sim Checkpoints
+
+The public checkpoints are available from
+[Telon1/autospeed_alohasim_ckpt](https://huggingface.co/Telon1/autospeed_alohasim_ckpt).
+
+Keep each snapshot with its configuration and normalization statistics:
+
+```text
+checkpoints/
+|-- transfer/
+|   |-- agent_config.yaml
+|   |-- full_config.yaml
+|   |-- stats.hdf5
+|   `-- snapshot/
+|       `-- 80000.pt
+`-- insertion/
+    |-- agent_config.yaml
+    |-- full_config.yaml
+    |-- stats.hdf5
+    `-- snapshot/
+        `-- 80000.pt
+```
+
+## ALOHA Sim Evaluation
+
+The following settings are recommended to reproduce the evaluations. EGL is used
+for headless MuJoCo rendering:
+
+```bash
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+export EVAL_SPEEDUP=true
+export EVAL_USE_NTA=false
+export EVAL_TEMPORAL_AGG=false
+export EVAL_NUM_ROLLOUTS=50
+export EVAL_MAX_TIMESTEPS=400
+export EVAL_SAVE_VIDEO=false
+export EVAL_SAVE_PLOTS=false
+```
+
+Evaluate Transfer Cube:
+
+```bash
+python scripts/eval_alohasim.py \
+  --ckpt-path checkpoints/transfer/snapshot/80000.pt
+```
+
+Evaluate Insertion:
+
+```bash
+python scripts/eval_alohasim.py \
+  --ckpt-path checkpoints/insertion/snapshot/80000.pt
+```
+
+Set `EVAL_TEMPORAL_AGG=true` to evaluate the same checkpoint with temporal
+aggregation. The evaluator uses the high-gain ALOHA Sim controller when
+`EVAL_SPEEDUP=true`; set it to `false` to use the normal controller XML.
+
 ## Training
+
+The simulation training entry points are:
 
 ```bash
 python scripts/train_alohasim.py
@@ -36,31 +103,17 @@ python scripts/train_libero.py
 python scripts/train_metaworld.py
 ```
 
-## Evaluation
+The default generic Actor configuration is an integration example. Reproducing
+the ALOHA Sim results requires the WiseActor-ACT configuration used by the
+released checkpoint.
+
+For the LIBERO experiments, we train the policy to predict absolute actions, so
+the original delta-action trajectories must be converted to absolute actions
+during data preprocessing.
+
+## Other Evaluation Entry Points
 
 ```bash
-python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>/snapshot/<step>.pt
 python scripts/eval_libero.py --ckpt-path checkpoints/<run>/snapshot/<step>.pt
 python scripts/eval_metaworld.py --ckpt-path checkpoints/<run>/snapshot/<step>.pt
 ```
-
-### AlohaSim high-gain controller
-
-`scripts/eval_alohasim.py` enables the AlohaSim speedup setting by default:
-
-```bash
-EVAL_SPEEDUP=true python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>/snapshot/<step>.pt
-```
-
-Set `EVAL_SPEEDUP=false` to evaluate with the normal controller XML:
-
-```bash
-EVAL_SPEEDUP=false python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>/snapshot/<step>.pt
-```
-
-`EVAL_SPEEDUP` is passed to `make_sim_env(task_name, speedup)`. When it is enabled, the simulator loads the high-gain MuJoCo XML files instead of the normal XML files under `/suite/act/assets/`. This increases the gripper actuator gain so that open/close commands respond faster and with stronger tracking during evaluation.
-
-
-### Pretrained Checkpoints
-We have prepared some pretrained checkpoints in the AlohaSim publicly available for the community to use.
-You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telon1/autospeed_alohasim_ckpt)

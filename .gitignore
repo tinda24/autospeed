@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+.vscode/
+.DS_Store
+build/
+dist/
+*.egg-info/
+outputs/
+example/autospeed_simulation/checkpoints/

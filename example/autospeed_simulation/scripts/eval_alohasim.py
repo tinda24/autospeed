@@ -85,9 +85,12 @@ class WorkspaceIL:
     def __init__(self, args):
         self.args = args
         set_seed(2)
-        self.ckpt_path = str(Path(self.args.ckpt_path).expanduser().resolve())
+        ckpt_input_path = Path(self.args.ckpt_path).expanduser()
+        if not ckpt_input_path.exists():
+            raise FileNotFoundError(f"Checkpoint not found: {ckpt_input_path}")
 
-        self.ckpt_dir = os.path.dirname(os.path.dirname(self.ckpt_path))
+        self.ckpt_path = str(ckpt_input_path.resolve())
+        self.ckpt_dir = str(ckpt_input_path.parent.parent.resolve())
         self.cfg_path = os.path.join(self.ckpt_dir, "full_config.yaml")
                                                                                                       
         self.eval_dir = os.path.join(

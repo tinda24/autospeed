@@ -1,3 +1,4 @@
+# AutoSpeed: Annotation-Free Stage-Adaptive Motion Speed Learning for Robot Manipulation
 
 The corresponding experiment videos and more details are available at: [Project Page](https://zihengqiu.github.io/AutoSpeed/)
 ## 1 Introduction
@@ -62,7 +63,7 @@ The `example` folder provides examples of the policies and environments that we 
 
 
 
-## 5 AutoSpeed Simulation Implement Guidance
+## 5 AutoSpeed Simulation Implementation Guide
 ### 5.1 Preparation
 
 Install the dependencies required by the target simulator before running its scripts. CleanDiffuser is used by the action heads:
@@ -125,9 +126,13 @@ EVAL_SPEEDUP=false python scripts/eval_alohasim.py --ckpt-path checkpoints/<run>
 
 
 ### 5.5 Pretrained Checkpoints
-We have prepared some pretrained checkpoints in the AlohaSim publicly available for the community to use.
-You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telon1/autospeed_alohasim_ckpt)
-(oh!Based on reader feedback, there is an issue with the module matching. We recommend that you adjust the parameters yourself for training. We will fix this problem by the end of this month.)
+The public ALOHA Sim checkpoints are available from
+[Hugging Face](https://huggingface.co/Telon1/autospeed_alohasim_ckpt). These
+checkpoints use the WiseActor-ACT policy implemented in
+`example/autospeed_simulation/agent/autospeed_act.py`.
+
+See the [simulation implementation guide](./example/autospeed_simulation/README.md)
+for detailed usage.
 
 
 
@@ -136,7 +141,7 @@ You can download it here. [[Pretrained Checkpoints]](https://huggingface.co/Telo
 ## 6 Autospeed Real-World Implement Guidance
 
 ### 6.1 Preparation
-```python
+```bash
 cd example/autospeed_cobot_magic/repos
 git clone https://github.com/CleanDiffuserTeam/CleanDiffuser.git
 ```
@@ -144,12 +149,12 @@ git clone https://github.com/CleanDiffuserTeam/CleanDiffuser.git
 The language encoder is available at [[all-MiniLM-L6-v2]](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
 
 ### 6.2 Training
-```python
+```bash
 python example/autospeed_cobot_magic/scripts/train.py
 ```
 
 ### 6.3 Real Robot Inference
-```python
+```bash
 python example/autospeed_cobot_magic/scripts/inference.py
 ```
 
