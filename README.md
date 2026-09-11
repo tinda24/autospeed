@@ -1,7 +1,12 @@
 # AutoSpeed: Annotation-Free Stage-Adaptive Motion Speed Learning for Robot Manipulation
 
 The corresponding experiment videos and more details are available at: [Project Page](https://zihengqiu.github.io/AutoSpeed/)
+
 ## 1 Introduction
+
+<p align="center">
+    <img src="./assets/overview.png" width="80%" alt="overview">
+</p>
 
 **AutoSpeed** is a model-agnostic learning framework that enables existing visuomotor policies to predict trajectories with stage-adaptive motion speeds, without requiring speed or stage annotations. 
 
