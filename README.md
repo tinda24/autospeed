@@ -2,6 +2,8 @@
 
 The corresponding experiment videos and more details are available at: [Project Page](https://zihengqiu.github.io/AutoSpeed/)
 
+Paper: [Arxiv](https://arxiv.org/pdf/2607.01051) , [ECCV Official](https://eccv.ecva.net/virtual/2026/poster/3578) 
+
 ## 1 Introduction
 
 <p align="center">
